@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#121417">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Music Rater">
+  <title>Music Rater</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#/">
+      <span class="disc"></span> <span class="brand-name">Music Rater</span>
+    </a>
+    <nav class="nav">
+      <a href="#/" data-nav="listened">Library</a>
+      <a href="#/?tab=want" data-nav="want">Want to listen</a>
+    </nav>
+    <form class="search" id="searchForm" autocomplete="off">
+      <input id="artistInput" type="search" placeholder="Artist" aria-label="Artist">
+      <input id="albumInput" type="search" placeholder="Album" aria-label="Album">
+      <button class="search-btn" type="submit" aria-label="Search">Search</button>
+    </form>
+    <div class="menu">
+      <span class="sync-dot" id="syncDot" hidden></span>
+      <button class="icon-btn" id="menuBtn" aria-label="More options" aria-haspopup="true">⋯</button>
+      <div class="menu-pop" id="menuPop" hidden>
+        <div id="accountItems"></div>
+        <button id="exportBtn">Export my ratings (JSON)</button>
+        <label class="menu-item">Import ratings…<input type="file" id="importInput" accept="application/json" hidden></label>
+      </div>
+    </div>
+  </header>
+
+  <main id="view"></main>
+
+  <footer class="foot">
+    Album info and tracklists from <a href="https://musicbrainz.org" target="_blank" rel="noopener">MusicBrainz</a>,
+    artwork from the <a href="https://coverartarchive.org" target="_blank" rel="noopener">Cover Art Archive</a>.
+  </footer>
+
+  <dialog id="authDlg" class="dlg">
+    <form method="dialog" onsubmit="return false">
+      <h2>Sync your ratings</h2>
+      <p class="muted">Sign in with the same account on your phone and computer to keep one library everywhere.</p>
+      <label>Email <input class="field" id="authEmail" type="email" autocomplete="email" required></label>
+      <label>Password <input class="field" id="authPass" type="password" autocomplete="current-password" minlength="6" required></label>
+      <div class="dlg-msg"></div>
+      <div class="dlg-actions">
+        <button type="button" class="btn" id="authCancel">Cancel</button>
+        <button type="button" class="btn" id="authSignUp">Create account</button>
+        <button type="submit" class="btn on" id="authSignIn">Sign in</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" hidden></div>
+  <script src="config.js"></script>
+  <script src="sync.js"></script>
+  <script src="spotify.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

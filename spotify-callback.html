@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Connecting Spotify…</title>
+  <style>body{background:#121417;color:#9aa3ad;font:15px system-ui,sans-serif;display:grid;place-items:center;height:100vh;margin:0}</style>
+</head>
+<body>
+  Connecting Spotify…
+  <script>
+    // Spotify sends you back here after login; hand the code to the main app.
+    location.replace('./#/spotify-callback?' + location.search.slice(1));
+  </script>
+</body>
+</html>
