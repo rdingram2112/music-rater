@@ -5,6 +5,6 @@ window.MUSIC_RATER_CONFIG = {
   spotifyClientId: '',
 
   // Supabase → your project → Project Settings → API
-  supabaseUrl: '',      // e.g. https://abcdefghijkl.supabase.co
-  supabaseAnonKey: ''   // the "anon" / "publishable" key (NOT the service_role / secret key)
+  supabaseUrl: 'https://qedhjforvktxjamyzyjc.supabase.co',
+  supabaseAnonKey: 'sb_publishable_0KiRUGMfCNH9AWgvl5yPMg_cSKVjIAz'   // publishable key (never the secret key)
 };
