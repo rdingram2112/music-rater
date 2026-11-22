@@ -189,8 +189,9 @@ function renderAccountMenu() {
       ? `<button data-act="spotify-off">Disconnect Spotify${Spotify.name() ? ` (${esc(Spotify.name())})` : ''}</button>`
       : '<button data-act="spotify-on">Connect Spotify…</button>');
   }
-  if (!Sync.enabled() || !Spotify.enabled()) {
-    items.push('<div class="menu-note">Sync / Spotify not set up yet — see SETUP.md</div>');
+  const missing = [!Sync.enabled() && 'Sync', !Spotify.enabled() && 'Spotify'].filter(Boolean);
+  if (missing.length) {
+    items.push(`<div class="menu-note">${missing.join(' and ')} not set up yet — see SETUP.md</div>`);
   }
   box.innerHTML = items.join('') + '<hr>';
   box.querySelectorAll('[data-act]').forEach(b => b.onclick = () => {
