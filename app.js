@@ -87,7 +87,7 @@ let mbLast = 0;
 function mb(path) {
   if (mbCache.has(path)) return mbCache.get(path);
   const run = mbChain.then(async () => {
-    for (let attempt = 0; attempt < 5; attempt++) {
+    for (let attempt = 0; attempt < 7; attempt++) {
       const wait = mbLast + 1250 - Date.now();
       if (wait > 0) await sleep(wait);
       mbLast = Date.now();
@@ -102,7 +102,7 @@ function mb(path) {
         continue;
       }
       // MusicBrainz answers 503 when it's rate limiting — back off and retry.
-      if (res.status === 503 || res.status === 429) { await sleep(2000 * (attempt + 1)); continue; }
+      if (res.status === 503 || res.status === 429) { await sleep(1300 + 700 * attempt); continue; }
       if (!res.ok) throw new Error(`MusicBrainz returned an error (${res.status}).`);
       return res.json();
     }
