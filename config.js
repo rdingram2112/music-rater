@@ -2,7 +2,7 @@
    Both values are safe to be public (they're designed to live in a web page). */
 window.MUSIC_RATER_CONFIG = {
   // Spotify → developer.spotify.com/dashboard → your app → "Client ID"
-  spotifyClientId: '',
+  spotifyClientId: '570b8705e60c4d8fac7590c3e7cabfdb',
 
   // Supabase → your project → Project Settings → API
   supabaseUrl: 'https://qedhjforvktxjamyzyjc.supabase.co',
